@@ -2,7 +2,7 @@
 <opencv_storage>
 
 <!-->Configration<-->
-<net_type>1</net_type>              <!-->0-ssd 1-yolo<-->
+<net_type>1</net_type>              <!-->0-ssd 1-yolo 2-ssd_tf<-->
 <thresh>0.35</thresh>               <!-->confidence threshold<-->
 <nms_thresh>0.25</nms_thresh>       <!-->nms threshold<-->
 
@@ -19,4 +19,11 @@
 <ssd_config>/dnn_nets/ssd/deploy.prototxt</ssd_config>
 <ssd_model>/dnn_nets/ssd/mobilenet_iter_73000.caffemodel</ssd_model>
 <ssd_name>/dnn_nets/ssd/ssd.names</ssd_name>
+  
+<!-->ssd_tf configration files<-->
+<ssd_tf_meanVal>0</ssd_tf_meanVal> 
+<ssd_tf_scaleFactor>1.0</ssd_tf_scaleFactor>
+<ssd_tf_config>/dnn_nets/ssd/ssd_mobilenet_v1_coco_2017_11_17.pbtxt</ssd_tf_config>
+<ssd_tf_model>/dnn_nets/ssd/ssd_mobilenet_v1_coco_2017_11_17.pb</ssd_tf_model>
+<ssd_tf_name>/dnn_nets/ssd/ssd.names</ssd_tf_name>
 </opencv_storage>
