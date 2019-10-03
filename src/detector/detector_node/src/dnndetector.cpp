@@ -24,7 +24,7 @@ DnnDetector::DnnDetector()
     setting_fs["nms_thresh"] >> nms_thresh;
 
     // If use YoloV3
-    if (net_type)
+    if (net_type==1)
     {
         std::cout << "INFO: Found \"net_type==1\", using **YoloV3** network" << std::endl;
         width = 416;
@@ -37,7 +37,7 @@ DnnDetector::DnnDetector()
     }
 
     // If use SSD
-    else
+    else if (net_type==0)
     {
         std::cout << "INFO: Found \"net_type==0\", using **SSD** network" << std::endl;
         width = 300;
@@ -47,6 +47,17 @@ DnnDetector::DnnDetector()
         setting_fs["ssd_name"] >> name_file;
         setting_fs["ssd_scaleFactor"] >> scaleFactor;
         setting_fs["ssd_meanVal"] >> meanVal;
+    }
+    else
+    {
+        std::cout << "INFO: Found \"net_type==2\", using **SSD TF** network" << std::endl;
+        width = 300;
+        height = 300;
+        setting_fs["ssd_tf_config"] >> net_structure;
+        setting_fs["ssd_tf_model"] >> model;
+        setting_fs["ssd_tf_name"] >> name_file;
+        setting_fs["ssd_tf_scaleFactor"] >> scaleFactor;
+        setting_fs["ssd_tf_meanVal"] >> meanVal;
     }
     net_structure = ros::package::getPath("detector") + net_structure;
     model = ros::package::getPath("detector") + model;
